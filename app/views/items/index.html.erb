@@ -1,14 +1,80 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Items</h1>
-
 <div id="items">
-  <% @items.each do |item| %>
-    <%= render item %>
-    <p>
-      <%= link_to "Show this item", item %>
-    </p>
-  <% end %>
+  
 </div>
 
-<%= link_to "New item", new_item_path %>
+<%= link_to "New item", new_item_path, class: "" %>
+
+
+
+
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 text-slate-600">
+  <div class="mx-auto max-w-lg">
+    <h1 class="text-center text-2xl font-bold sm:text-3xl">
+      Items
+    </h1>
+
+    <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati sunt
+      dolores deleniti inventore quaerat mollitia?
+    </p>
+  </div>
+
+  <!-- table -->
+  <div class="overflow-hidden overflow-x-auto rounded-lg border border-gray-200 mt-8">
+    <table class="min-w-full divide-y divide-gray-200 text-sm">
+      <thead class="bg-gray-100">
+        <tr>
+          <th
+            class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+          >
+            <div class="flex items-center gap-2">
+              Name
+            </div>
+          </th>
+          <th
+            class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+          >
+            <div class="flex items-center gap-2">
+              Email
+            </div>
+          </th>
+          <th
+            class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+          >
+            <div class="flex items-center gap-2">
+              Amount
+            </div>
+          </th>
+          <th
+            class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+          >
+            Status
+          </th>
+          <th class="px-4 py-2"></th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+        <% @items.each do |item| %>
+          <tr id="<%= dom_id item %>">
+            <td class="whitespace-nowrap px-4 py-2"><%= link_to item.item_name, item, class: "text-sm text-blue-600 hover:underline"  %></td>
+            <td class="whitespace-nowrap px-4 py-2"><%= item.website %></td>
+            <td class="whitespace-nowrap px-4 py-2">$783.23</td>
+            <td class="whitespace-nowrap px-4 py-2">
+              <strong
+                class="rounded bg-green-100 px-3 py-1.5 text-xs font-medium text-green-700"
+              >
+                Good
+              </strong>
+            </td>
+            <td class="whitespace-nowrap px-4 py-2">
+              <%= link_to "Edit", edit_item_path(item), class: "text-sm text-blue-600 hover:underline" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
