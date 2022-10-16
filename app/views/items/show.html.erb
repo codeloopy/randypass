@@ -1,10 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @item %>
+<%= render 'item_component', item: @item, watchword_fe: @watchword_fe %>
 
-<div>
-  <%= link_to "Edit this item", edit_item_path(@item) %> |
-  <%= link_to "Back to items", items_path %>
-
-  <%= button_to "Destroy this item", @item, method: :delete %>
+<div class="text-center w-max-sm flex justify-center">
+  <%= link_to "Edit", edit_item_path(@item), class: "text-gray-500 hover:underline" %> <span class="text-gray-300 mx-4">|</span><%= button_to "Delete", @item, method: :delete, class: "text-red-500 hover:underline" %>
 </div>

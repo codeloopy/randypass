@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   def show
+    # @watchword_fe = @item.website_watchword.to_s
+    @watchword_fe = 123456.to_s
   end
 
   # GET /items/new

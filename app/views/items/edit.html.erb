@@ -1,8 +1,5 @@
 <%= render "form", item: @item, page_name: "Editing Item" %>
 
-<br>
-
-<div>
-  <%= link_to "Show this item", @item %> |
-  <%= link_to "Back to items", items_path %>
+<div class="text-center w-max-sm flex justify-center">
+  <%= link_to "Back", items_path, class: "text-gray-500 hover:underline" %> <span class="text-gray-300 mx-4">|</span><%= button_to "Delete", @item, method: :delete, class: "text-red-500 hover:underline" %>
 </div>
