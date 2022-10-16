@@ -74,3 +74,4 @@ gem "lockbox"
 gem "blind_index"
 gem 'simple_form'
 gem 'simple_form-tailwind'
+gem 'devise' 

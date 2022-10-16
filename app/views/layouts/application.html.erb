@@ -22,7 +22,10 @@
   </head>
 
   <body>
-    <%= render 'partials/navigation' %>
+    <header>
+      <%= render 'partials/navigation' %>
+      <%= render 'partials/notifications' %>
+    </header>
     <main>
       <%= yield %>
     </main>
