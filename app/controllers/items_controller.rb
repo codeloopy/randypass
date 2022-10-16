@@ -8,8 +8,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   def show
-    # @watchword_fe = @item.website_watchword.to_s
-    @watchword_fe = 123456.to_s
   end
 
   # GET /items/new
@@ -48,12 +46,10 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def item_params
       params.require(:item).permit(:item_name, :website, :website_username, :website_watchword, :item_notes)
     end

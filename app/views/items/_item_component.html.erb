@@ -1,3 +1,13 @@
+<style>
+  .hide-pass span {
+    visibility: hidden;
+  }
+  .hide-pass::before {
+    content: "• • • • • • • • • •";
+  }
+
+</style>
+
 <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 text-slate-600">
   <div class="mx-auto max-w-lg">
     <h1 class="text-center text-2xl font-bold sm:text-3xl">
@@ -20,7 +30,7 @@
       <div class="mt-4">
         <p>Password</p>
         <div class="relative mt-1">
-          <p class="w-full rounded-lg border-gray-600 p-4 pr-12 text-sm shadow-sm" id="password-container"></p>
+          <p class="w-full rounded-lg border-gray-600 p-4 pr-12 text-sm shadow-sm hide-pass" id="password-container"><span><%= item.website_watchword %></span></p>
           <span class="absolute inset-y-0 right-4 inline-flex items-center" id="password-reveal">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,22 +69,11 @@
 
 
 <script>
-  const hide_passwords = '• • • • • • • • • •';
-  // const watch_word = "<%= @watchword_fe %>";
-  const watch_word = "<%= item.website_watchword %>";
   const reveal_password = document.getElementById('password-reveal');
   const password_container = document.getElementById('password-container');
-  const password_viz = document.getElementById('item_website_watchword');
 
-  password_container.innerHTML = hide_passwords;
-  console.log(watch_word);
-
-  // reveal_password.addEventListener('click', () => {
-  //   if (password_viz.type === "password") {
-  //     password_viz.type = "text";
-  //   } else {
-  //     password_viz.type = "password";
-  //   }
-  // })
+  reveal_password.addEventListener('click', () => {
+    password_container.classList.toggle('hide-pass');
+  })
 
 </script>
