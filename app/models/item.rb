@@ -4,5 +4,5 @@ class Item < ApplicationRecord
 
   belongs_to :user
 
-  validates :item_name, :website, :website_username, :website_watchword, :item_notes, presence: true
+  validates :item_name, :website, :website_username, :website_watchword, presence: true
 end
