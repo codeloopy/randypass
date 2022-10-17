@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  # before_action :validate_user
+  before_action :item_owner, only: %i[ show edit destroy]
 
   # GET /items
   def index
@@ -48,8 +48,11 @@ class ItemsController < ApplicationController
     redirect_to items_url, notice: "Item was successfully destroyed."
   end
 
-  def validate_user
-    redirect_to root_path unless current_user and current_user.id == params[:id]
+  def item_owner
+    unless @item.user_id == current_user.id
+      flash[:notice] = 'Access denied as you are not owner of this Job'
+      redirect_to items_path
+    end
   end
 
   private
