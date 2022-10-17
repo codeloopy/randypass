@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :item_owner, only: %i[ show edit destroy]
 
   # GET /items
   def index
-    @items = Item.all
+    @items = current_user.items
   end
 
   # GET /items/1
@@ -22,6 +24,7 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
 
     if @item.save
       redirect_to @item, notice: "Item was successfully created."
@@ -45,12 +48,19 @@ class ItemsController < ApplicationController
     redirect_to items_url, notice: "Item was successfully destroyed."
   end
 
+  def item_owner
+    unless @item.user_id == current_user.id
+      flash[:notice] = 'Access denied as you are not owner of this Job'
+      redirect_to items_path
+    end
+  end
+
   private
     def set_item
       @item = Item.find(params[:id])
     end
 
     def item_params
-      params.require(:item).permit(:item_name, :website, :website_username, :website_watchword, :item_notes)
+      params.require(:item).permit(:item_name, :website, :website_username, :website_watchword, :item_notes, :user_id)
     end
 end
