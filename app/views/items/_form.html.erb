@@ -15,8 +15,8 @@
       <%= simple_form_for(@item) do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  
         
+        <%= f.hidden_field :user_id , :value => current_user.id %>
         <div class="mt-4">
           <%= f.input :item_name, :label => "Entry name", input_html: {class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"} %>
         </div>

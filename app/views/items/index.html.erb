@@ -41,6 +41,13 @@
           <th
             class="whitespace-nowrap px-4 py-2 text-left font-medium"
           >
+            <div class="flex items-center gap-2">
+              User
+            </div>
+          </th>
+          <th
+            class="whitespace-nowrap px-4 py-2 text-left font-medium"
+          >
             Password Quality
           </th>
           <th class="px-4 py-2"></th>
@@ -52,6 +59,7 @@
           <tr id="<%= dom_id item %>">
             <td class="whitespace-nowrap px-4 py-2"><%= link_to item.item_name, item, class: "text-sm text-blue-600 hover:underline"  %></td>
             <td class="whitespace-nowrap px-4 py-2"><%= item.website %></td>
+            <td class="whitespace-nowrap px-4 py-2"><%= item.user_id %></td>
             <td class="whitespace-nowrap px-4 py-2">
               <strong
                 class="rounded bg-green-100 px-3 py-1.5 text-xs font-medium text-green-700"
