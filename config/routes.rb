@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # Defines the root path route ("/")
+  root "items#index"
   
   devise_scope :user do
     # Redirests signing out users back to sign-in
@@ -9,9 +11,5 @@ Rails.application.routes.draw do
 
   
   resources :items
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  root "items#index"
 
 end
