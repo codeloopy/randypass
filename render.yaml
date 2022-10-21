@@ -1,12 +1,11 @@
-
 databases:
-  - name: randypass
-    databaseName: randypass
-    user: randypass
+  - name: mysite
+    databaseName: mysite
+    user: mysite
 
 services:
   - type: web
-    name: randypass
+    name: mysite
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
