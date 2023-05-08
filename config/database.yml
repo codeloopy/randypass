@@ -81,7 +81,8 @@ test:
 #
 production:
   <<: *default
-  # database: randypass_production
-  # username: randypass
-  # password: <%= ENV["RANDYPASS_DATABASE_PASSWORD"] %>
   url: <%= ENV['DATABASE_URL'] %>
+  database: randypass_prod
+  username: randypass
+  password: <%= ENV["RANDYPASS_DATABASE_PASSWORD"] %>
+  
