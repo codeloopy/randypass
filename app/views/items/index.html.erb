@@ -1,3 +1,12 @@
+<div id="items">
+  
+</div>
+
+<%= link_to "New item", new_item_path, class: "" %>
+
+
+
+
 <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 text-slate-600">
   <div class="mx-auto max-w-lg">
     <h1 class="text-center text-2xl font-bold sm:text-3xl">
@@ -32,6 +41,13 @@
           <th
             class="whitespace-nowrap px-4 py-2 text-left font-medium"
           >
+            <div class="flex items-center gap-2">
+              User
+            </div>
+          </th>
+          <th
+            class="whitespace-nowrap px-4 py-2 text-left font-medium"
+          >
             Password Quality
           </th>
           <th class="px-4 py-2"></th>
@@ -41,8 +57,9 @@
       <tbody class="divide-y divide-gray-200">
         <% @items.each do |item| %>
           <tr id="<%= dom_id item %>">
-            <td class="whitespace-nowrap px-4 py-2"><%= link_to item.item_name, item, class: "text-sm text-blue-600 hover:underline" %></td>
+            <td class="whitespace-nowrap px-4 py-2"><%= link_to item.item_name, item, class: "text-sm text-blue-600 hover:underline"  %></td>
             <td class="whitespace-nowrap px-4 py-2"><%= item.website %></td>
+            <td class="whitespace-nowrap px-4 py-2"><%= item.user_id %></td>
             <td class="whitespace-nowrap px-4 py-2">
               <strong
                 class="rounded bg-green-100 px-3 py-1.5 text-xs font-medium text-green-700"
@@ -57,8 +74,5 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-  <div class="text-right">
-    <div class="whitespace-nowrap px-4 py-2"><%= link_to "Add a new item", new_item_path, class: "text-sm text-blue-600 hover:underline" %></div>
   </div>
 </div>

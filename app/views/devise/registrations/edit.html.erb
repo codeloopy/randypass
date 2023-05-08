@@ -1,54 +1,35 @@
-<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 text-slate-600">
-  <div class="mx-auto max-w-lg">
-    <h2 class="text-center text-2xl font-bold sm:text-3xl">
-      Edit <%= resource_name.to_s.humanize %>
-    </h2>
-    
-    <div class="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= f.error_notification %>
-        <div class="form-inputs">
-          <div class="mt-4">
-            <%= f.input :email, required: true, autofocus: true %>
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-            <% end %>
-          </div>
-          <div class="mt-4">
-            <%= f.input :password,
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+    <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-          </div>
-          <div class="mt-4">
-            <%= f.input :password_confirmation,
+    <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-          </div>
-          <div class="mt-4">
-            <%= f.input :current_password,
+    <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-          </div>
-          <div class="mt-4">
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          </div>
-        </div>
-
-        <div class="mt-5">
-          <div class="form-actions">
-            <%= f.button :submit, "Update", class: "block w-third rounded-lg bg-slate-600 px-5 py-3 text-sm font-medium text-white text-center uppercase w-full" %>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <div class="mt-5">
-        <%= link_to "Back", :back %>    
-      </div>
-      <div class="mt-5">
-        <p><span class="font-bold">Unhappy?</span> <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'text-red-600' %></p>
-      </div>
-    </div>
   </div>
-</div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
