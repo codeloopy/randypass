@@ -75,3 +75,4 @@ gem "blind_index"
 gem 'simple_form'
 gem 'simple_form-tailwind'
 gem 'devise' 
+gem "dockerfile-rails", ">= 1.4", :group => :development
